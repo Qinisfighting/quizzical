@@ -3,6 +3,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import he from 'he';
+import '../App.css';
 
 
 export default function Question({ allAnswers, qID, question, isShowAnswers, updateHeld}) {
@@ -10,20 +11,21 @@ export default function Question({ allAnswers, qID, question, isShowAnswers, upd
 
         //Held Button Styles
         let styles = {
-            backgroundColor: answer.isHeld ? 'var(--isHeld-bg-color)'  : 'revert-layer',
-            color: answer.isHeld ? 'var(--focused-btn-color)' : 'revert-layer'
+            backgroundColor: answer.isHeld ? 'var(--isHeld-bg-color)'  : 'var(--bg-color)',
+            color: answer.isHeld ? 'black'  : 'gray'
+            
         };
         
         if(isShowAnswers) {
             
             if(answer.isHeld && answer.isCorrect){
-                styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)' };
+                styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)', border: 'none' };
 
             } else if (answer.isHeld && answer.isCorrect === false) {
-                styles = { backgroundColor: '#F8BCBC', opacity: '50%', border: 'none', color: 'var(--focused-btn-color)' };
+                styles = { backgroundColor: '#F8BCBC', opacity: '80%', border: 'none', color: 'var(--focused-btn-color)' };
 
             } else if (answer.isCorrect) {
-                styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)' };
+                styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)', border: 'none' };
 
             } else if (answer.isCorrect === false) {
                 styles = { opacity: '50%' };

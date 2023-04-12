@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { nanoid } from 'nanoid';
 import Question from './Question';
 import home from "../assets/home.png";
+import '../App.css';
 
 
 export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMode}) {
@@ -11,13 +12,10 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
     const [resetQuiz, setResetQuiz] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
-    const {numberOfQuestions, answerType, category, difficulty} = formData;
+    const {numberOfQuestions, category, difficulty, type} = formData;
 
     useEffect(() => {
-        let apiLink = `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}`;
-        if(category === '') {
-            apiLink = `https://opentdb.com/api.php?amount=${numberOfQuestions}&difficulty=${difficulty}`;
-        }
+        let apiLink = `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}&type=${type}`;   
         fetch(apiLink)
             .then(res => res.json())
             .then(data => {
@@ -49,7 +47,7 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
             })
             .catch(error => console.log(error))
             .finally(() => setIsLoading(false));
-    }, [resetQuiz, numberOfQuestions, answerType, category, difficulty]);
+    }, [resetQuiz, numberOfQuestions, type, category, difficulty]);
 
     // qId and aID match the correct answer and update held
     // aID is made in Question.js with .map(_, _.id)
@@ -124,8 +122,8 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
         </div>
         :
         <div className='quiz__footer quiz__footer--finished'>
-            <p className='quiz__finalText'>{`You scored ${score}/${formData.amountOfQuestions} answers`}</p>
-            <button className='btn quiz__btn' onClick={reset}>Play Again</button>
+            <p className='quiz__finalText'>{`You scored ${score}/${formData.numberOfQuestions} answers`}</p>
+            <button className='btn quiz__btn' onClick={reset}>Try Again</button>
         </div>;    
     
     
