@@ -1,14 +1,10 @@
-//import React, {useEffect, useState} from 'react';
-
-
-
 export default function Home(props) {
-    
+
     return (
-       <main className={props.lightMode ? "lightMode" : ""}>
-         
-         <h1>Answer the questions and test your knowledge!</h1>
-         <form>
+        <main className={props.lightMode ? "lightMode" : ""}>
+
+            <h1>Answer the questions and test your knowledge!</h1>
+            <form>
                 <label htmlFor='numberOfQuestions'>Number of Questions:</label>
                 <select
                     onChange={props.handleFormChange}
@@ -18,9 +14,9 @@ export default function Home(props) {
                 >
                     <option value='5'>5</option>
                     <option value='10'>10</option>
-                   
+
                 </select>
-                <br/>
+                <br />
                 <label htmlFor='category'>Select Category:</label>
                 <select
                     onChange={props.handleFormChange}
@@ -54,7 +50,7 @@ export default function Home(props) {
                     <option value='31'>Anime & Manga</option>
                     <option value='32'>Cartoons & Animations</option>
                 </select>
-                <br/>
+                <br />
                 <label htmlFor='difficulty'>Select Difficulty:</label>
                 <select
                     onChange={props.handleFormChange}
@@ -67,7 +63,7 @@ export default function Home(props) {
                     <option value='medium'>Medium</option>
                     <option value='hard'>Hard</option>
                 </select>
-                <br/>
+                <br />
                 <label htmlFor='type'>Select Type:</label>
                 <select
                     onChange={props.handleFormChange}
@@ -78,14 +74,14 @@ export default function Home(props) {
                     <option value=''>Any Type</option>
                     <option value='multiple'>Multiple Choice</option>
                     <option value='boolean'>True / False</option>
-                   
+
                 </select>
             </form>
-            <div className='home__btnCtr' style={{width: 'min(235px, 90%)'}}>
-                <button onClick={props.toggleIsHome}  className='btn home__startBtn'>Start Quiz</button>
+            <div className='home__btnCtr' style={{ width: 'min(235px, 90%)' }}>
+                <button onClick={props.toggleIsHome} className='btn home__startBtn'>Start Quiz</button>
             </div>
-                           
-         
-       </main>
+
+
+        </main>
     )
 }
