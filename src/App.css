@@ -2,7 +2,7 @@
   --bg-color: #f5f7fb;
   --color: #5f6b6b;
   --focused-btn-color: #434344;
-  --isHeld-bg-color: #c9c7c7;
+  --isHeld-bg-color: #afadad;
 
 }
 
@@ -11,13 +11,12 @@
   text-align: center;
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 0;
 
 }
 
 
 body {
-  margin-bottom: 0;
+  margin: 0;
   height: 100%
 }
 
@@ -57,7 +56,7 @@ nav {
 nav>img {
   width: 60px;
   margin: auto;
-  padding-left: 5vw
+  padding-left: 6vw
 }
 
 nav>h1 {
@@ -125,14 +124,14 @@ main {
   align-items: center;
   font-weight: 400;
   min-height: 600px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 
 
 }
 
 main>h1 {
-  font-weight: 400;
-  margin-top: 10px;
+  font-weight: 400; 
+  width: 70%;
 }
 
 main.lightMode {
@@ -145,7 +144,7 @@ main.lightMode {
 form {
   display: flex;
   flex-direction: column;
-  margin: 34px 0 46px;
+  margin: 20px 0 40px;
 }
 
 select {
@@ -350,9 +349,9 @@ section.lightMode {
 
 footer {
   font-size: 13px;
-  margin: 8px auto;
+  margin: 0;
+  padding: 5px;
   color: #343044;
-
 
 }
 
@@ -361,13 +360,21 @@ footer {
   .toggler {
     display: flex;
     align-items: center;
-    padding-left: 60vw;
+    padding-left: 68vw;
     position: absolute;
-    padding-right: 0
+   
   }
+  nav>img {
+    padding-left: 13vw
+  }
+
+  main>h1 {
+    width: 60%;
+  }
+
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   header {
 
     display: flex;
@@ -386,21 +393,33 @@ footer {
     display: flex;
     margin: 0;
     align-items: center;
-    padding-top: 20px
+    padding-top:10px
   }
 
+  nav>img {
+    padding-left: 2vw
+  }
+    
   .toggler {
     display: flex;
     align-items: center;
     margin: auto;
     padding-bottom: 50px;
-    padding-right: 60%
+    padding-left: 50%
+  
   }
 
   main>h1 {
     font-size: 25px;
-    width: 75%;
-    margin: 13px auto 0
+    width: 88%;
+    margin: 0 auto
   }
 
+  .quiz__finalText {
+    font-size: 15px;
+  }
+
+  .quiz__btn {
+    font-size: 15px;
+  }  
 }

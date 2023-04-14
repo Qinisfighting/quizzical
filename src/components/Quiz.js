@@ -127,10 +127,16 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
         <div className='quiz__footer quiz__footer--finished'>
             <p className='quiz__finalText'>{`You scored ${score}/${formData.numberOfQuestions} answers`}</p>
 
-            {score === formData.numberOfQuestions &&
-                <button disabled={isAnimating} onMouseOut={reward} style={{ borderStyle: 'none', margin: 0, padding: 0, cursor: "pointer" }}>
+           {score === 5 &&
+                <button disabled={isAnimating} onClick={reward} style={{ borderStyle: 'none', margin: 0, padding: 0, cursor: "pointer" }}>
                     <span id="balloonsReward" />🎉
-                </button>}
+                </button>
+            }
+            {score === 10 &&
+                <button disabled={isAnimating} onClick={reward} style={{ borderStyle: 'none', margin: 0, padding: 0, cursor: "pointer" }}>
+                    <span id="balloonsReward" />🎉
+                </button>
+            }
 
             <button className='btn quiz__btn' onClick={reset}>Play Again</button>
         </div>;
