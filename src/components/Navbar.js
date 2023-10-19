@@ -4,6 +4,7 @@ import sun from "../assets/sun.png";
 import moon from "../assets/moon.png";
 
 export default function Navbar(props) {
+
   return (
     <header className={props.lightMode ? "lightMode" : ""}>
       <nav>

@@ -18,14 +18,12 @@ export default function Question({ allAnswers, qID, question, isShowAnswers, upd
 
         if (isShowAnswers) {
 
-            if (answer.isHeld && answer.isCorrect) {
-                styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)', border: 'none' };
+            if (answer.isCorrect) {
+                styles = { backgroundColor: '#94D7A2', color: 'black', border: 'none' };
 
             } else if (answer.isHeld && !answer.isCorrect) {
-                styles = { backgroundColor: '#F8BCBC', opacity: '80%', border: 'none', color: 'var(--focused-btn-color)' };
-
-            } else if (answer.isCorrect) {
-                styles = { backgroundColor: '#94D7A2', color: 'var(--focused-btn-color)', border: 'none' };
+                styles = { backgroundColor: '#F8BCBC', opacity: '80%', border: 'none', color: 'var(--focused-btn-color)',textDecoration: 'line-through'
+             };
 
             } else if (!answer.isCorrect) {
                 styles = { opacity: '50%' };

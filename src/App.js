@@ -28,7 +28,8 @@ function App() {
 
     setFormData(prev => {
       return {
-        ...prev, [name]: value
+        ...prev, 
+        [name]: value
       };
     });
   }
@@ -38,7 +39,7 @@ function App() {
   }, [lightMode]);
   return (
     <div className="App">
-      <Navbar lightMode={lightMode} toggle={toggleLightMode} />
+      <Navbar lightMode={lightMode} toggle={toggleLightMode}/>
       {
         isHome
           ?
