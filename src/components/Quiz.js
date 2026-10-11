@@ -19,9 +19,18 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
 
     useEffect(() => {
         let apiLink = `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}&type=${type}`;
-        fetch(apiLink)
+        let cancelled = false;
+        let timer;
+        const loadQuestions = () => fetch(apiLink)
             .then(res => res.json())
             .then(data => {
+                if (cancelled) return;
+                // the API allows only 1 request per 5 seconds per IP (response_code 5), so wait and retry
+                if (data.response_code === 5) {
+                    timer = setTimeout(loadQuestions, 5000);
+                    return;
+                }
+                setIsLoading(false);
                 setQuizData(() => {
                     return data.results.map(question => {
 
@@ -48,8 +57,17 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
                     });
                 });
             })
-            .catch(error => console.log(error))
-            .finally(() => setIsLoading(false));
+            .catch(error => {
+                console.log(error);
+                if (!cancelled) setIsLoading(false);
+            });
+
+        // deferred so React StrictMode's extra mount/unmount in dev cancels the first call before it is sent
+        timer = setTimeout(loadQuestions, 0);
+        return () => {
+            cancelled = true;
+            clearTimeout(timer);
+        };
     }, [resetQuiz, numberOfQuestions, type, category, difficulty]);
 
     // qID and aID match the correct answer and update held
@@ -106,7 +124,7 @@ export default function Quiz({ toggleIsHome, formData, lightMode, toggleLightMod
 
         return (
             <Question
-                key={nanoid()}
+                key={question.id}
                 question={question.question}
                 allAnswers={question.allAnswers}
                 qID={question.id}

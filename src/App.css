@@ -4,6 +4,15 @@
   --focused-btn-color: #434344;
   --isHeld-bg-color: #afadad;
 
+  /* Backgrounds drawn with CSS gradients instead of large images: no download, instant render */
+  --dark-bg:
+    radial-gradient(circle at 74% 12%, rgba(48, 54, 74, 0.7), transparent 22%),
+    linear-gradient(180deg, transparent 55%, rgba(5, 10, 16, 0.85) 100%),
+    linear-gradient(90deg, #131c2e 0%, #1e2a41 35%, #222e46 60%, #1b263c 100%);
+  --light-bg:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(190, 180, 110, 0.06) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at 50% 45%, #fbf9d0 0%, #faf8c8 35%, #f8f6b6 75%, #f7f4ab 100%);
 }
 
 #root {
@@ -26,9 +35,11 @@ body {
 header {
 
   display: flex;
-  background-image: url('./assets/dark.png');
+  background-color: #1c283d;
+  background-image: var(--dark-bg);
   background-size: cover;
   background-repeat: repeat;
+  background-attachment: fixed;
   align-items: center;
   height: 80px;
   padding: 18px 0;
@@ -39,7 +50,8 @@ header {
 
 header.lightMode {
 
-  background-image: url('./assets/light.png');
+  background-color: #faf8c8;
+  background-image: var(--light-bg);
   border-bottom: 2px dotted rgb(138, 136, 136);
 
 }
@@ -112,7 +124,8 @@ header.lightMode .toggler--slider {
 }
 
 main {
-  background-image: url('./assets/dark.png');
+  background-color: #1c283d;
+  background-image: var(--dark-bg);
   background-size: cover;
   background-repeat: repeat;
   background-attachment: fixed;
@@ -136,7 +149,8 @@ main>h1 {
 
 main.lightMode {
 
-  background-image: url('./assets/light.png');
+  background-color: #faf8c8;
+  background-image: var(--light-bg);
   color: #3a3a3ade;
 
 }
@@ -180,7 +194,8 @@ select {
 
 
 section {
-  background-image: url('./assets/dark.png');
+  background-color: #1c283d;
+  background-image: var(--dark-bg);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -193,7 +208,13 @@ section {
 
 section.lightMode {
   color: #403b55;
-  background-image: url('./assets/light.png');
+  background-color: #faf8c8;
+  background-image: var(--light-bg);
+}
+
+/* let the results bar sit directly on the footer */
+section:has(.quiz__footer--finished) {
+  padding-bottom: 0;
 }
 
 .home {
@@ -271,7 +292,7 @@ section.lightMode {
 }
 
 .quiz__footer--finished {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   background-color: var(--bg-color);
   border: 1px inset white;
@@ -348,13 +369,48 @@ section.lightMode {
 
 
 footer {
+  background-color: #1c283d;
+  background-image: var(--dark-bg);
+  background-attachment: fixed;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #9aa4b8;
   font-size: 13px;
+  letter-spacing: 0.03em;
   margin: 0;
-  padding: 5px;
-  color: #343044;
-  bottom: 0;
+  padding: 18px 16px 22px;
+}
 
+footer.lightMode {
+  background-color: #faf8c8;
+  background-image: var(--light-bg);
+  border-top-color: rgba(62, 129, 136, 0.25);
+  color: #5c5a42;
+}
 
+footer p {
+  margin: 0;
+}
+
+.footer__dot {
+  margin: 0 6px;
+  opacity: 0.6;
+}
+
+footer a {
+  color: #6fc3cb;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms, color 200ms;
+}
+
+footer.lightMode a {
+  color: #3e8188;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  border-bottom-color: currentColor;
 }
 
 

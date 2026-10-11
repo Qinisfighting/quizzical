@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import he from 'he';
 /*since the API data for the questions and answers include html entities,
   he is to decode html entities into readable text, */
@@ -31,7 +30,7 @@ export default function Question({ allAnswers, qID, question, isShowAnswers, upd
         }
 
         return (
-            <button key={nanoid()}
+            <button key={answer.id}
                 onClick={() => updateHeld(qID, answer.id)}
                 className='btn question__btn'
                 style={styles}

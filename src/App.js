@@ -53,14 +53,13 @@ function App() {
         />
       )}
 
-      <footer>
+      <footer className={lightMode ? "lightMode" : ""}>
         <p>
-          © {new Date().getFullYear()} by{" "}
+          © {new Date().getFullYear()} Quizzical <span className="footer__dot">·</span> Made by{" "}
           <a
             href="https://www.yanqin.de"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}
           >
             QIN's code
           </a>
