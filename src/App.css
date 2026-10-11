@@ -41,6 +41,18 @@ body {
   height: 100%;
 }
 
+/* fill the whole viewport on tall screens: the page content grows, the footer stays at the bottom */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main,
+section {
+  flex-grow: 1;
+}
+
 header {
   display: flex;
   background-color: #1c283d;
@@ -51,7 +63,7 @@ header {
   align-items: center;
   height: 80px;
   padding: 18px 0;
-  margin: 0 auto;
+  margin: 0;
   border-bottom: 2px dotted rgb(138, 136, 136);
 }
 
